@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abhinandan's Portfolio</title>
+  <link href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+  <style>
+    body { margin: 0; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+    .gradient-bg {
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a0033 50%, #2a0044 100%), radial-gradient(circle at center, rgba(168, 85, 247, 0.2) 0%, transparent 70%);
+      background-attachment: fixed;
+      position: relative;
+    }
+    .gradient-bg-dark {
+      background: linear-gradient(135deg, #1a1a1a 0%, #330066 50%, #4c0088 100%), radial-gradient(circle at center, rgba(168, 85, 247, 0.3) 0%, transparent 70%);
+      background-attachment: fixed;
+      position: relative;
+    }
+    .glass-effect {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      transform: perspective(1000px);
+    }
+    .section {
+      transition: all 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      opacity: 0;
+      transform: translateY(60px) rotateX(10deg);
+    }
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0) rotateX(0);
+    }
+    .hover-effect {
+      transition: all 0.5s ease;
+      position: relative;
+      overflow: hidden;
+      transform: perspective(1000px);
+    }
+    .hover-effect::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(168, 85, 247, 0.4), transparent);
+      transition: all 0.6s ease;
+      z-index: -1;
+    }
+    .hover-effect:hover::before {
+      left: 100%;
+    }
+    .hover-effect:hover {
+      transform: perspective(1000px) translateY(-8px) rotateX(5deg);
+      box-shadow: 0 15px 30px rgba(168, 85, 247, 0.7), 0 0 20px rgba(216, 180, 254, 0.5);
+      border-color: #d8b4fe;
+    }
+    .purple-accent { color: #d8b4fe; font-size: 1.25rem; }
+    .purple-hover:hover {
+      color: #e9d5ff;
+      filter: drop-shadow(0 0 15px #e9d5ff);
+      transform: translateY(-3px);
+    }
+    .white-text { color: #ffffff; }
+    .purple-bg {
+      background: linear-gradient(45deg, #4c1d95, #7e22ce);
+      position: relative;
+      z-index: 1;
+    }
+    .purple-bg::after {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(45deg, #a855f7, #d8b4fe);
+      filter: blur(8px);
+      opacity: 0.5;
+      z-index: -1;
+      transition: opacity 0.5s ease;
+    }
+    .purple-bg:hover::after {
+      opacity: 0.8;
+    }
+    .icon {
+      font-size: 2rem;
+      transition: all 0.5s ease;
+    }
+    .icon:hover {
+      transform: scale(1.4) rotate(8deg);
+      color: #e9d5ff;
+      filter: drop-shadow(0 0 15px #e9d5ff);
+    }
+    nav {
+      transition: all 0.5s ease;
+      background: rgba(10, 10, 10, 0.95);
+    }
+    nav:hover {
+      background: rgba(10, 10, 10, 1);
+      box-shadow: 0 6px 15px rgba(168, 85, 247, 0.4);
+    }
+    .parallax {
+      background-attachment: fixed;
+      background-size: cover;
+      position: relative;
+      z-index: 1;
+    }
+    .parallax::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, rgba(10, 10, 10, 0.8), rgba(26, 0, 51, 0.8));
+      z-index: -1;
+    }
+    .profile-img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #d8b4fe;
+      transition: all 0.5s ease;
+      transform: perspective(1000px);
+    }
+    .profile-img:hover {
+      transform: perspective(1000px) scale(1.1) rotate(4deg);
+      border-color: #e9d5ff;
+      box-shadow: 0 0 20px rgba(168, 85, 247, 0.8);
+      filter: drop-shadow(0 0 15px #e9d5ff);
+    }
+    .about-container {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .contact-container {
+      width: 100%;
+    }
+    @media (max-width: 640px) {
+      .text-4xl { font-size: 2rem; }
+      .text-xl { font-size: 1.25rem; }
+      .flex.space-x-4 { flex-direction: column; gap: 1.2rem; }
+      .icon { font-size: 1.6rem; }
+      .profile-img { width: 120px; height: 120px; margin-bottom: 1rem; }
+      .about-container {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+      .purple-accent { font-size: 1.1rem; }
+    }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(168, 85, 247, 0.7); }
+      70% { box-shadow: 0 0 0 12px rgba(168, 85, 247, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(168, 85, 247, 0); }
+    }
+    @keyframes neonGlow {
+      0% { text-shadow: 0 0 5px #d8b4fe, 0 0 10px #d8b4fe, 0 0 15px #e9d5ff; }
+      50% { text-shadow: 0 0 10px #d8b4fe, 0 0 20px #e9d5ff, 0 0 30px #e9d5ff; }
+      100% { text-shadow: 0 0 5px #d8b4fe, 0 0 10px #d8b4fe, 0 0 15px #e9d5ff; }
+    }
+    .fade-in { animation: fadeIn 1.5s ease-in forwards; }
+    .pulse-effect:hover { animation: pulse 1.8s infinite; }
+    .neon-glow { animation: neonGlow 2s ease-in-out infinite; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script src="https://unpkg.com/react@18.2.0/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.20.6/babel.min.js"></script>
+  <script type="text/babel">
+    try {
+      const { useState, useEffect } = React;
+
+      const projects = [
+        { 
+          id: 1, 
+          title: "AI-Powered Knee Osteoarthritis Analysis", 
+          desc: "Built an Android app using MobileNetV3 for real-time KOA detection from X-rays, optimized for offline use in rural settings. Achieved 77.6% accuracy with Grad-CAM heatmaps for explainability."
+        },
+        { 
+          id: 2, 
+          title: "Customer Data Analytics Platform", 
+          desc: "Developed a cloud-based ETL pipeline with Informatica IICS to unify customer data, enabling a 360-degree view and KPIs for marketing and sales."
+        },
+        { 
+          id: 3, 
+          title: "Hate Speech Classification System", 
+          desc: "Created a multi-task NLP model using Universal Sentence Encoder and TensorFlow to classify hate speech, target, and severity in social media text."
+        },
+        { 
+          id: 4, 
+          title: "Music-Inspired Avatar Generation", 
+          desc: "Generated avatars from Spotify playlist emotions using GANs and DeepDream, with sentiment analysis for emotional depth."
+        },
+        { 
+          id: 5, 
+          title: "Faux-Hate Detection", 
+          desc: "Built an NLP system with fine-tuned BERT and LoRA to detect fake and hate content in Hinglish social media posts."
+        },
+        { 
+          id: 6, 
+          title: "Alphanumeric Character Recognition", 
+          desc: "Developed a CNN model in TensorFlow to classify handwritten letters, digits, and symbols from 24x24 pixel images."
+        },
+        { 
+          id: 7, 
+          title: "Student Admission Predictor", 
+          desc: "Used a Random Forest Classifier to predict university admissions based on academic and extracurricular features."
+        },
+        { 
+          id: 8, 
+          title: "Hospital Management System", 
+          desc: "Implemented a C-based system with max heap for patient prioritization, quicksort, and graph-based department management."
+        },
+      ];
+
+      const internships = [
+        { 
+          id: 1, 
+          title: "Research Intern", 
+          company: "IIIT Dharwad", 
+          duration: "June 2025 - Present", 
+          desc: "Contributed to AI research projects, focusing on optimization of deep learning models."
+        },
+        { 
+          id: 2, 
+          title: "Web Development Intern", 
+          company: "Plasmid", 
+          duration: "Aug 2024 - Oct 2024", 
+          desc: "Developed responsive web applications using modern JavaScript frameworks."
+        },
+        { 
+          id: 3, 
+          title: "Machine Learning Intern", 
+          company: "Cognifyz Technologies", 
+          duration: "Jul 2024 - Aug 2024", 
+          desc: "Built and deployed machine learning models for real-world data analytics tasks."
+        },
+      ];
+
+      const skills = [
+        "Embedded AI", "Android Development", "Deep Learning", "Data Engineering", "Data Science",
+        "Machine Learning", "Natural Language Processing", "Computer Vision", "Data Analysis", "Chatbots"
+      ];
+
+      function App() {
+        const [darkMode, setDarkMode] = useState(false);
+
+        useEffect(() => {
+          const sections = document.querySelectorAll('.section');
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+              }
+            });
+          }, { threshold: 0.1 });
+          sections.forEach(section => observer.observe(section));
+          return () => sections.forEach(section => observer.unobserve(section));
+        }, []);
+
+        const toggleDarkMode = () => {
+          setDarkMode(!darkMode);
+        };
+
+        return (
+          <div className={`min-h-screen ${darkMode ? 'gradient-bg-dark' : 'gradient-bg'} font-sans fade-in`}>
+            <nav className="fixed top-0 w-full bg-opacity-95 backdrop-blur-lg p-4 z-20 glass-effect">
+              <div className="container mx-auto flex justify-between items-center">
+                <h1 className="text-3xl font-extrabold purple-accent neon-glow">Abhinandan's Portfolio</h1>
+                <div className="flex space-x-4">
+                  <a href="#about" className="purple-accent purple-hover text-lg">About</a>
+                  <a href="#skills" className="purple-accent purple-hover text-lg">Skills</a>
+                  <a href="#projects" className="purple-accent purple-hover text-lg">Projects</a>
+                  <a href="#internships" className="purple-accent purple-hover text-lg">Internships</a>
+                  <a href="#education" className="purple-accent purple-hover text-lg">Education</a>
+                  <a href="#contact" className="purple-accent purple-hover text-lg">Contact</a>
+                  <button onClick={toggleDarkMode} className="p-2 rounded-full purple-bg hover-effect pulse-effect">
+                    {darkMode ? <i className="fas fa-sun icon"></i> : <i className="fas fa-moon icon"></i>}
+                  </button>
+                </div>
+              </div>
+            </nav>
+
+            <main className="container mx-auto pt-24 px-4">
+              <section id="about" className="section py-20 parallax">
+                <h2 className="text-4xl font-bold mb-6 purple-accent neon-glow">About Me</h2>
+                <div className="glass-effect p-8 rounded-lg hover-effect about-container flex">
+                  <img
+                    src="Abhinandan.jpg"
+                    alt="Profile"
+                    className="profile-img mr-6"
+                  />
+                  <div className="flex-1">
+                    <p className="text-lg white-text">
+                      I am a final-year Computer Science (Artificial Intelligence) undergraduate at KLE Technological University, Hubballi, with a strong focus on building intelligent, context-aware systems that seamlessly blend AI technologies, embedded computing, and mobile development. My interests lie at the intersection of Artificial Intelligence, Embedded Intelligent Systems, and Android Development—where real-time data processing meets edge deployment and user-centric innovation. I am particularly passionate about developing agentic AI systems, integrating on-device machine learning, and creating smart, autonomous solutions that operate reliably across platforms. I bring hands-on experience in Natural Language Processing, Computer Vision, and Full-Stack Development, along with a growing specialization in AI-powered mobile and embedded applications. I am deeply interested in designing resource-efficient, real-time AI systems that drive next-generation experiences in fields such as smart automation, ambient intelligence, and mobile AI. Technically, I’m proficient in Python, C/C++, JavaScript, Java, and SQL, and skilled in tools and frameworks like TensorFlow, PyTorch, Hugging Face, React.js, Flask, Django, and Android SDK. I’ve earned certifications in Machine Learning (IBM) and DevOps & Agile Practices (Infosys Springboard), reflecting my commitment to lifelong learning and high-impact engineering. Driven by curiosity, innovation, and ethical responsibility, I aim to contribute to intelligent systems that are scalable, adaptive, and deeply integrated into the fabric of everyday life—whether on the cloud, the edge, or in your pocket.
+                    </p>
+                  </div>
+                </div>
+              </section>
+
+              <section id="skills" className="section py-20">
+                <h2 className="text-4xl font-bold mb-6 purple-accent neon-glow">Top Skills</h2>
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+                  {skills.map((skill, index) => (
+                    <div key={index} className="hover-effect purple-bg p-4 rounded-lg glass-effect">
+                      <p className="text-center white-text">{skill}</p>
+                    </div>
+                  ))}
+                </div>
+              </section>
+
+              <section id="projects" className="section py-20 parallax">
+                <h2 className="text-4xl font-bold mb-6 purple-accent neon-glow">Projects</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                  {projects.map((project) => (
+                    <div key={project.id} className="hover-effect purple-bg p-6 rounded-lg glass-effect">
+                      <h3 className="text-xl font-semibold purple-accent neon-glow">{project.title}</h3>
+                      <p className="mt-2 white-text">{project.desc}</p>
+                    </div>
+                  ))}
+                </div>
+              </section>
+
+              <section id="internships" className="section py-20">
+                <h2 className="text-4xl font-bold mb-6 purple-accent neon-glow">Internships</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                  {internships.map((internship) => (
+                    <div key={internship.id} className="hover-effect purple-bg p-6 rounded-lg glass-effect">
+                      <h3 className="text-xl font-semibold purple-accent neon-glow">{internship.title}</h3>
+                      <p className="mt-2 white-text">{internship.company}</p>
+                      <p className="mt-1 text-sm white-text">{internship.duration}</p>
+                      <p className="mt-2 white-text">{internship.desc}</p>
+                    </div>
+                  ))}
+                </div>
+              </section>
+
+              <section id="education" className="section py-20 parallax">
+                <h2 className="text-4xl font-bold mb-6 purple-accent neon-glow">Education</h2>
+                <div className="hover-effect purple-bg p-6 rounded-lg glass-effect">
+                  <h3 className="text-xl font-semibold purple-accent neon-glow">B.E in Artificial Intelligence</h3>
+                  <p className="white-text">KLE Technological University, Hubballi, 2022 - Present</p>
+                  <p className="white-text">Specializing in AI, Embedded AI, Android Development, and Data Science technologies.</p>
+                </div>
+              </section>
+
+              <section id="contact" className="section py-20">
+                <h2 className="text-4xl font-bold mb-6 purple-accent neon-glow">Contact</h2>
+                <div className="glass-effect p-8 rounded-lg hover-effect contact-container">
+                  <p className="text-lg white-text">
+                    Reach out to me via email: <a href="mailto:abhinandanvanajol8@gmail.com" className="purple-accent purple-hover">abhinandanvanajol8@gmail.com</a>
+                  </p>
+                  <div className="mt-6 flex space-x-6">
+                    <a href="https://github.com/abhinandan976" className="purple-accent" aria-label="GitHub">
+                      <i className="fab fa-github icon"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/abhinandan-onajol-5429a6260" className="purple-accent" aria-label="LinkedIn">
+                      <i className="fab fa-linkedin icon"></i>
+                    </a>
+                    <a href="https://instagram.com/abhinandan_onajol" className="purple-accent" aria-label="Instagram">
+                      <i className="fab fa-instagram icon"></i>
+                    </a>
+                  </div>
+                </div>
+              </section>
+            </main>
+
+            <footer className="py-8 text-center glass-effect">
+              <p className="white-text">© By Abhinandan Onajol. All rights reserved.</p>
+            </footer>
+          </div>
+        );
+      }
+
+      ReactDOM.render(<App />, document.getElementById('root'));
+      console.log("Portfolio rendered successfully");
+    } catch (error) {
+      console.error("Error rendering portfolio:", error);
+      document.getElementById('root').innerHTML = `
+        <div style="color: red; padding: 20px; font-family: sans-serif;">
+          <h1>Error Rendering Portfolio</h1>
+          <p>Please check the console for details.</p>
+        </div>
+      `;
+    }
+  </script>
+</body>
+</html>
