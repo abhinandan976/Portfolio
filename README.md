@@ -15,7 +15,7 @@ A brief introduction about who I am, my academic background, and my passion for 
 A categorized list of my technical skills covering:
 - **Programming Languages**: Python, C/C++, Java, JavaScript
 - **Technologies**: Machine Learning, Deep Learning, Android SDK, Embedded Systems
-- **Tools**: Git, VS Code, Jupyter Notebook, etc.
+- **Tools**: Git, VS Code, etc.
 
 ### 🎓 Internships
 Details of internships I’ve completed including:
@@ -34,10 +34,10 @@ Ways to reach me including email and social media links.
 
 ## ⚙️ Tech Stack
 
-- HTML5
+- HTML
 - CSS
 - JavaScript
-- Bootstrap or other CSS framewor (add if applicable)
+- Bootstrap and other CSS framewor (add if applicable)
 
 ---
 
