@@ -144,19 +144,40 @@
     .contact-container {
       width: 100%;
     }
-    @media (max-width: 640px) {
-      .text-4xl { font-size: 2rem; }
-      .text-xl { font-size: 1.25rem; }
-      .flex.space-x-4 { flex-direction: column; gap: 1.2rem; }
-      .icon { font-size: 1.6rem; }
-      .profile-img { width: 120px; height: 120px; margin-bottom: 1rem; }
+    /* Enhanced Mobile Responsiveness */
+    @media (max-width: 768px) {
+      .text-4xl { font-size: 1.75rem; }
+      .text-3xl { font-size: 1.5rem; }
+      .text-xl { font-size: 1.1rem; }
+      .text-lg { font-size: 1rem; }
+      .container { padding-left: 1rem; padding-right: 1rem; }
+      nav .flex { flex-direction: column; gap: 1rem; align-items: center; }
+      .flex.space-x-4 { flex-direction: column; gap: 1rem; align-items: center; }
+      .icon { font-size: 1.5rem; }
+      .profile-img { width: 100px; height: 100px; margin: 0 auto 1rem; }
       .about-container {
         flex-direction: column;
         align-items: center;
         justify-content: center;
         text-align: center;
       }
-      .purple-accent { font-size: 1.1rem; }
+      .purple-accent { font-size: 1rem; }
+      .grid-cols-2, .grid-cols-3, .grid-cols-4, .grid-cols-5 {
+        grid-template-columns: 1fr;
+      }
+      .section { padding: 2rem 0; }
+      .glass-effect { padding: 1rem; }
+      .hover-effect:hover { transform: none; box-shadow: none; }
+      .parallax { background-attachment: scroll; }
+    }
+    @media (max-width: 480px) {
+      .text-4xl { font-size: 1.5rem; }
+      .text-3xl { font-size: 1.25rem; }
+      .text-lg { font-size: 0.9rem; }
+      .profile-img { width: 80px; height: 80px; }
+      .icon { font-size: 1.2rem; }
+      .section { padding: 1.5rem 0; }
+      .container { padding-left: 0.5rem; padding-right: 0.5rem; }
     }
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     @keyframes pulse {
@@ -227,13 +248,6 @@
       ];
 
       const internships = [
-        { 
-          id: 1, 
-          title: "Research Intern", 
-          company: "IIIT Dharwad", 
-          duration: "June 2025 - Present", 
-          desc: "Contributed to AI research projects, focusing on optimization of deep learning models."
-        },
         { 
           id: 2, 
           title: "Web Development Intern", 
