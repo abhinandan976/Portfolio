@@ -13,33 +13,33 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --bg-primary: #0f172a;
-            /* main dark background */
-            --bg-secondary: #020617;
+            --bg-primary: #f8fafc;
+            /* main light background */
+            --bg-secondary: #ffffff;
             /* cards & sections */
-            --bg-gradient: linear-gradient(135deg, #0f172a 0%, #020617 100%);
-            --bg-gradient-alt: linear-gradient(135deg, #1e293b 0%, #020617 100%);
+            --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            --bg-gradient-alt: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
 
-            --surface: rgba(255, 255, 255, 0.04);
+            --surface: rgba(0, 0, 0, 0.02);
 
-            --text-primary: #e5e7eb;
-            --text-secondary: #94a3b8;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
 
-            --accent-primary: #38bdf8;
-            /* cyan-blue */
-            --accent-secondary: #0ea5e9;
-            --accent-purple: #a855f7;
-            --accent-pink: #ec4899;
-            --accent-cyan: #06b6d4;
-            --accent-green: #22c55e;
-            --accent-orange: #f59e0b;
+            --accent-primary: #4f46e5;
+            /* indigo */
+            --accent-secondary: #4338ca;
+            --accent-purple: #7c3aed;
+            --accent-pink: #db2777;
+            --accent-cyan: #0891b2;
+            --accent-green: #059669;
+            --accent-orange: #d97706;
 
-            --border-color: rgba(255, 255, 255, 0.08);
+            --border-color: rgba(15, 23, 42, 0.08);
 
-            --shadow-soft: 0 2px 12px rgba(0, 0, 0, 0.4);
-            --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.6);
-            --shadow-hover: 0 12px 40px rgba(56, 189, 248, 0.25);
-            --shadow-color: 0 10px 40px rgba(56, 189, 248, 0.25);
+            --shadow-soft: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+            --shadow-medium: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 20px 25px -5px rgba(79, 70, 229, 0.1), 0 8px 10px -6px rgba(79, 70, 229, 0.1);
+            --shadow-color: 0 10px 40px rgba(79, 70, 229, 0.12);
 
             --space-xs: 0.25rem;
             --space-sm: 0.5rem;
@@ -85,8 +85,8 @@
             width: 100%;
             height: 100%;
             background-image:
-                linear-gradient(rgba(56, 189, 248, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(56, 189, 248, 0.03) 1px, transparent 1px);
+                linear-gradient(rgba(79, 70, 229, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(79, 70, 229, 0.03) 1px, transparent 1px);
             background-size: 50px 50px;
             pointer-events: none;
             z-index: 0;
@@ -100,7 +100,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at 50% 50%, rgba(56, 189, 248, 0.05) 0%, transparent 50%);
+            background: radial-gradient(circle at 50% 50%, rgba(79, 70, 229, 0.04) 0%, transparent 60%);
             pointer-events: none;
             z-index: 0;
             animation: pulse 4s ease-in-out infinite;
@@ -148,7 +148,7 @@
         h1 {
             font-size: clamp(2.5rem, 5vw, 4rem);
             font-weight: 800;
-            background: linear-gradient(135deg, #e5e7eb 0%, #38bdf8 100%);
+            background: linear-gradient(135deg, #0f172a 0%, #4f46e5 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -214,7 +214,7 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(15, 23, 42, 0.95);
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(20px);
             z-index: 1000;
             padding: var(--space-md) 0;
@@ -296,10 +296,7 @@
         }
 
         #hero {
-            background: radial-gradient(circle at top,
-                    rgba(56, 189, 248, 0.15),
-                    transparent 60%),
-                linear-gradient(135deg, #020617 0%, #0f172a 100%);
+            background: linear-gradient(rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.88)), url('hero_bg.png') no-repeat center center / cover;
             text-align: center;
             justify-content: center;
             position: relative;
@@ -325,6 +322,20 @@
             }
         }
 
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
         #hero h1 {
             color: var(--text-primary);
             margin-bottom: var(--space-md);
@@ -339,12 +350,12 @@
             padding: var(--space-md) var(--space-xl);
             border: none;
             border-radius: 50px;
-            color: var(--bg-primary);
+            color: #ffffff;
             font-size: 1rem;
             font-weight: 700;
             cursor: pointer;
             transition: all 0.3s;
-            box-shadow: 0 0 30px rgba(56, 189, 248, 0.3);
+            box-shadow: 0 0 30px rgba(79, 70, 229, 0.3);
             position: relative;
             overflow: hidden;
         }
@@ -352,7 +363,7 @@
         .cta:hover {
             background: var(--accent-secondary);
             transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 0 40px rgba(56, 189, 248, 0.5);
+            box-shadow: 0 0 40px rgba(79, 70, 229, 0.5);
         }
 
         #about {
@@ -367,7 +378,7 @@
             right: 0;
             width: 40%;
             height: 100%;
-            background: radial-gradient(circle, rgba(56, 189, 248, 0.08) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(79, 70, 229, 0.08) 0%, transparent 70%);
             z-index: 0;
         }
 
@@ -383,13 +394,16 @@
             max-width: 300px;
             border-radius: 12px;
             transition: all 0.3s;
-            box-shadow: 0 8px 32px rgba(56, 189, 248, 0.2);
-            border: 3px solid rgba(56, 189, 248, 0.3);
+            box-shadow: 0 8px 32px rgba(79, 70, 229, 0.2);
+            border: 3px solid rgba(79, 70, 229, 0.3);
+            position: relative;
+            animation: float 6s ease-in-out infinite;
         }
 
         #about img:hover {
-            transform: scale(1.03);
-            box-shadow: 0 12px 48px rgba(56, 189, 248, 0.3);
+            animation: none;
+            transform: scale(1.03) translateY(-5px);
+            box-shadow: 0 12px 48px rgba(79, 70, 229, 0.15);
             border-color: var(--accent-primary);
         }
 
@@ -428,18 +442,18 @@
             font-weight: 700;
             text-decoration: none;
             font-size: 0.95rem;
-            box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+            box-shadow: 0 0 20px rgba(79, 70, 229, 0.2);
         }
 
         .resume-btn:hover {
             background: var(--accent-primary);
-            color: var(--bg-primary);
+            color: #ffffff;
             transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 0 30px rgba(56, 189, 248, 0.4);
+            box-shadow: 0 0 30px rgba(79, 70, 229, 0.4);
         }
 
         #skills {
-            background: linear-gradient(135deg, #020617 0%, #0f172a 100%);
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
             position: relative;
         }
 
@@ -454,18 +468,18 @@
         }
 
         .skill-card {
-            background: rgba(15, 23, 42, 0.4);
+            background: #ffffff;
             color: var(--text-primary);
             padding: var(--space-xl);
             border-radius: 20px;
             text-align: center;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            box-shadow: var(--shadow-soft);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: 1px solid rgba(56, 189, 248, 0.1);
+            border: 1px solid var(--border-color);
             position: relative;
             backdrop-filter: blur(20px) saturate(180%);
             overflow: hidden;
+            animation: float 6s ease-in-out infinite;
         }
 
         .skill-card::before {
@@ -475,7 +489,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, rgba(56, 189, 248, 0.05), transparent);
+            background: linear-gradient(135deg, rgba(79, 70, 229, 0.05), transparent);
             opacity: 0;
             transition: opacity 0.4s;
             z-index: 0;
@@ -485,11 +499,18 @@
             opacity: 1;
         }
 
+        .skill-card:nth-child(even) {
+            animation-delay: 1.5s;
+        }
+
+        .skill-card:nth-child(3n) {
+            animation-delay: 3s;
+        }
+
         .skill-card:hover {
+            animation: none;
             transform: translateY(-12px) scale(1.03);
-            box-shadow: 0 20px 60px rgba(56, 189, 248, 0.3),
-                0 0 0 1px rgba(56, 189, 248, 0.4),
-                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            box-shadow: var(--shadow-hover);
             border-color: var(--accent-primary);
         }
 
@@ -499,11 +520,11 @@
         }
 
         .skill-card:nth-child(1) i {
-            color: #667eea;
+            color: #4f46e5;
         }
 
         .skill-card:nth-child(2) i {
-            color: #ec4899;
+            color: #db2777;
         }
 
         .skill-card:nth-child(3) i {
@@ -511,7 +532,7 @@
         }
 
         .skill-card:nth-child(4) i {
-            color: #10b981;
+            color: #059669;
         }
 
         .skill-card:nth-child(5) i {
@@ -557,15 +578,15 @@
         }
 
         .project-card {
-            background: rgba(15, 23, 42, 0.4);
+            background: #ffffff;
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            box-shadow: var(--shadow-soft);
             transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
-            border: 1px solid rgba(56, 189, 248, 0.1);
+            border: 1px solid var(--border-color);
             backdrop-filter: blur(20px) saturate(180%);
+            animation: float 8s ease-in-out infinite;
         }
 
         .project-card::after {
@@ -575,7 +596,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, transparent 0%, rgba(56, 189, 248, 0.1) 100%);
+            background: linear-gradient(135deg, transparent 0%, rgba(79, 70, 229, 0.1) 100%);
             opacity: 0;
             transition: opacity 0.5s;
             pointer-events: none;
@@ -585,11 +606,14 @@
             opacity: 1;
         }
 
+        .project-card:nth-child(even) {
+            animation-delay: 2s;
+        }
+
         .project-card:hover {
+            animation: none;
             transform: translateY(-15px);
-            box-shadow: 0 30px 60px rgba(56, 189, 248, 0.3),
-                0 0 0 2px rgba(56, 189, 248, 0.5),
-                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            box-shadow: var(--shadow-hover);
             border-color: var(--accent-primary);
         }
 
@@ -642,21 +666,21 @@
 
         .view-btn {
             background: var(--accent-primary);
-            color: var(--bg-primary);
+            color: #ffffff;
             padding: var(--space-sm) var(--space-lg);
             border-radius: 25px;
             cursor: pointer;
             text-decoration: none;
             display: inline-block;
             transition: all 0.3s;
-            box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+            box-shadow: 0 0 20px rgba(79, 70, 229, 0.3);
             font-weight: 600;
             border: none;
         }
 
         .view-btn:hover {
             transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 0 30px rgba(56, 189, 248, 0.5);
+            box-shadow: 0 0 30px rgba(79, 70, 229, 0.5);
         }
 
         .project-info {
@@ -671,25 +695,25 @@
         }
 
         .tag {
-            background: rgba(56, 189, 248, 0.15);
+            background: rgba(79, 70, 229, 0.15);
             color: var(--accent-primary);
             padding: var(--space-xs) var(--space-md);
             border-radius: 20px;
             font-size: 0.85rem;
             transition: all 0.3s;
-            border: 1px solid rgba(56, 189, 248, 0.3);
+            border: 1px solid rgba(79, 70, 229, 0.3);
             font-weight: 600;
         }
 
         .tag:hover {
             background: var(--accent-primary);
-            color: var(--bg-primary);
+            color: #ffffff;
             transform: translateY(-2px) scale(1.05);
             border-color: transparent;
         }
 
         #experience {
-            background: linear-gradient(135deg, #020617 0%, #0f172a 100%);
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
             position: relative;
         }
 
@@ -711,7 +735,7 @@
             top: 0;
             bottom: 0;
             width: 3px;
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 0.3) 100%);
+            background: linear-gradient(180deg, rgba(79, 70, 229, 0.1) 0%, rgba(79, 70, 229, 0.3) 50%, rgba(79, 70, 229, 0.1) 100%);
             transform: translateX(-50%);
         }
 
@@ -743,13 +767,12 @@
         }
 
         .timeline-content {
-            background: rgba(15, 23, 42, 0.4);
+            background: #ffffff;
             padding: var(--space-lg);
             border-radius: 20px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            box-shadow: var(--shadow-soft);
             position: relative;
-            border: 1px solid rgba(56, 189, 248, 0.1);
+            border: 1px solid var(--border-color);
             transition: all 0.4s;
             max-width: 45%;
             flex: 1;
@@ -758,9 +781,7 @@
 
         .timeline-content:hover {
             transform: translateY(-8px);
-            box-shadow: 0 20px 50px rgba(56, 189, 248, 0.3),
-                0 0 0 1px rgba(56, 189, 248, 0.4),
-                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            box-shadow: var(--shadow-hover);
             border-color: var(--accent-primary);
         }
 
@@ -783,18 +804,18 @@
         }
 
         .timeline-item:nth-child(1) .timeline-icon {
-            color: #667eea;
-            border-color: #667eea;
+            color: #4f46e5;
+            border-color: #4f46e5;
         }
 
         .timeline-item:nth-child(2) .timeline-icon {
-            color: #ec4899;
-            border-color: #ec4899;
+            color: #db2777;
+            border-color: #db2777;
         }
 
         .timeline-item:nth-child(3) .timeline-icon {
-            color: #10b981;
-            border-color: #10b981;
+            color: #059669;
+            border-color: #059669;
         }
 
         .timeline-content h3 {
@@ -822,7 +843,7 @@
             left: 0;
             width: 100%;
             height: 40%;
-            background: radial-gradient(circle at top, rgba(56, 189, 248, 0.1) 0%, transparent 70%);
+            background: radial-gradient(circle at top, rgba(79, 70, 229, 0.1) 0%, transparent 70%);
             z-index: 0;
         }
 
@@ -840,7 +861,7 @@
         textarea {
             width: 100%;
             padding: var(--space-md);
-            background: rgba(15, 23, 42, 0.6);
+            background: #ffffff;
             border: 2px solid var(--border-color);
             border-radius: 8px;
             color: var(--text-primary);
@@ -854,7 +875,7 @@
         textarea:focus {
             outline: none;
             border-color: var(--accent-primary);
-            box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15), 0 0 20px rgba(56, 189, 248, 0.2);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15), 0 0 20px rgba(79, 70, 229, 0.2);
         }
 
         .social-icons {
@@ -867,7 +888,7 @@
         .social-icons a {
             width: 64px;
             height: 64px;
-            background: rgba(56, 189, 248, 0.1);
+            background: rgba(79, 70, 229, 0.1);
             border: 2px solid var(--accent-primary);
             border-radius: 50%;
             display: flex;
@@ -875,7 +896,7 @@
             justify-content: center;
             color: var(--accent-primary);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+            box-shadow: 0 0 20px rgba(79, 70, 229, 0.2);
             position: relative;
             font-size: 1.5rem;
             text-decoration: none;
@@ -884,8 +905,8 @@
         .social-icons a:hover {
             background: var(--accent-primary);
             transform: translateY(-5px) scale(1.15);
-            color: var(--bg-primary);
-            box-shadow: 0 0 30px rgba(56, 189, 248, 0.5);
+            color: #ffffff;
+            box-shadow: 0 0 30px rgba(79, 70, 229, 0.5);
         }
 
 
@@ -893,23 +914,23 @@
         .social-icons a:nth-child(2) {
             border-color: var(--accent-pink);
             color: var(--accent-pink);
-            background: rgba(236, 72, 153, 0.1);
+            background: rgba(219, 39, 119, 0.1);
         }
 
         .social-icons a:nth-child(2):hover {
             background: var(--accent-pink);
-            box-shadow: 0 0 30px rgba(236, 72, 153, 0.5);
+            box-shadow: 0 0 30px rgba(219, 39, 119, 0.5);
         }
 
         .social-icons a:nth-child(3) {
             border-color: var(--accent-green);
             color: var(--accent-green);
-            background: rgba(34, 197, 94, 0.1);
+            background: rgba(5, 150, 105, 0.1);
         }
 
         .social-icons a:nth-child(3):hover {
             background: var(--accent-green);
-            box-shadow: 0 0 30px rgba(34, 197, 94, 0.5);
+            box-shadow: 0 0 30px rgba(5, 150, 105, 0.5);
         }
 
         @media (max-width: 1024px) {
@@ -940,7 +961,7 @@
                 left: 0;
                 width: 100%;
                 flex-direction: column;
-                background: rgba(15, 23, 42, 0.98);
+                background: rgba(255, 255, 255, 0.98);
                 padding: var(--space-md);
                 box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
                 border-top: 1px solid var(--border-color);
@@ -1081,7 +1102,7 @@
         .loader-bar {
             width: 200px;
             height: 3px;
-            background: rgba(56, 189, 248, 0.2);
+            background: rgba(79, 70, 229, 0.2);
             margin: var(--space-lg) auto 0;
             border-radius: 10px;
             overflow: hidden;
@@ -1144,11 +1165,11 @@
 
         /* GitHub Stats */
         .stat-card {
-            background: rgba(15, 23, 42, 0.4);
+            background: #ffffff;
             padding: var(--space-xl);
             border-radius: 16px;
             text-align: center;
-            border: 1px solid rgba(56, 189, 248, 0.2);
+            border: 1px solid var(--border-color);
             backdrop-filter: blur(20px);
             transition: all 0.3s;
         }
@@ -1156,7 +1177,7 @@
         .stat-card:hover {
             transform: translateY(-5px);
             border-color: var(--accent-primary);
-            box-shadow: 0 10px 30px rgba(56, 189, 248, 0.3);
+            box-shadow: 0 10px 30px rgba(79, 70, 229, 0.3);
         }
 
         .stat-card i {
@@ -1208,7 +1229,7 @@
             max-width: 900px;
             max-height: 90vh;
             overflow: hidden;
-            border: 1px solid rgba(56, 189, 248, 0.3);
+            border: 1px solid rgba(79, 70, 229, 0.3);
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
             animation: modalSlideUp 0.4s ease-out;
             position: relative;
@@ -1230,7 +1251,7 @@
             position: absolute;
             top: 20px;
             right: 20px;
-            background: rgba(56, 189, 248, 0.2);
+            background: rgba(79, 70, 229, 0.2);
             border: 2px solid var(--accent-primary);
             color: var(--accent-primary);
             width: 40px;
@@ -1244,7 +1265,7 @@
 
         .modal-close:hover {
             background: var(--accent-primary);
-            color: var(--bg-primary);
+            color: #ffffff;
             transform: rotate(90deg);
         }
 
@@ -1263,7 +1284,7 @@
 
         .download-btn {
             background: var(--accent-primary);
-            color: var(--bg-primary);
+            color: #ffffff;
             padding: var(--space-sm) var(--space-lg);
             border-radius: 8px;
             text-decoration: none;
@@ -1273,7 +1294,7 @@
 
         .download-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 0 20px rgba(56, 189, 248, 0.5);
+            box-shadow: 0 0 20px rgba(79, 70, 229, 0.5);
         }
 
         .modal-body {
@@ -1301,7 +1322,7 @@
 
         .skill-meter-bar {
             height: 8px;
-            background: rgba(56, 189, 248, 0.15);
+            background: rgba(79, 70, 229, 0.15);
             border-radius: 10px;
             overflow: hidden;
             position: relative;
@@ -1313,7 +1334,7 @@
             border-radius: 10px;
             width: 0%;
             transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+            box-shadow: 0 0 10px rgba(79, 70, 229, 0.5);
             position: relative;
         }
 
@@ -1367,7 +1388,7 @@
             border-radius: 24px;
             width: 95%;
             max-width: 1000px;
-            border: 1px solid rgba(56, 189, 248, 0.2);
+            border: 1px solid var(--border-color);
             box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
             animation: modalSlideUp 0.5s ease-out;
             margin: auto;
@@ -1432,12 +1453,12 @@
         }
 
         .case-study-tech span {
-            background: rgba(56, 189, 248, 0.15);
+            background: rgba(79, 70, 229, 0.15);
             color: var(--accent-primary);
             padding: var(--space-xs) var(--space-md);
             border-radius: 20px;
             font-size: 0.85rem;
-            border: 1px solid rgba(56, 189, 248, 0.3);
+            border: 1px solid rgba(79, 70, 229, 0.3);
         }
 
         .case-study-btn {
@@ -1454,7 +1475,7 @@
 
         .case-study-btn:hover {
             background: var(--accent-primary);
-            color: var(--bg-primary);
+            color: #ffffff;
         }
 
         /* ==================== RECRUITER MODE ==================== */
@@ -1480,13 +1501,13 @@
 
         .recruiter-toggle:hover {
             background: var(--accent-purple);
-            color: var(--bg-primary);
+            color: #ffffff;
             transform: scale(1.05);
         }
 
         .recruiter-toggle.active {
             background: var(--accent-purple);
-            color: var(--bg-primary);
+            color: #ffffff;
         }
 
         /* Recruiter Mode Styles */
@@ -1553,8 +1574,8 @@
         }
 
         .metric-card {
-            background: rgba(15, 23, 42, 0.6);
-            border: 1px solid rgba(56, 189, 248, 0.1);
+            background: #ffffff;
+            border: 1px solid var(--border-color);
             border-radius: 12px;
             padding: var(--space-md);
             text-align: center;
@@ -1580,123 +1601,7 @@
             letter-spacing: 0.5px;
         }
 
-        /* ==================== SYSTEM DESIGN PLAYGROUND ==================== */
-        #playground {
-            background: var(--bg-secondary);
-            border-top: 1px solid var(--border-color);
-            border-bottom: 1px solid var(--border-color);
-        }
 
-        .playground-container {
-            display: grid;
-            grid-template-columns: 200px 1fr;
-            gap: var(--space-md);
-            background: rgba(15, 23, 42, 0.8);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            overflow: hidden;
-            height: 500px;
-        }
-
-        .toolbox {
-            background: rgba(30, 41, 59, 0.5);
-            padding: var(--space-md);
-            border-right: 1px solid var(--border-color);
-        }
-
-        .toolbox h4 {
-            color: var(--accent-primary);
-            margin-bottom: var(--space-md);
-            font-size: 0.9rem;
-            text-transform: uppercase;
-        }
-
-        .toolbox-item {
-            background: rgba(15, 23, 42, 0.8);
-            border: 1px solid var(--border-color);
-            padding: var(--space-sm);
-            margin-bottom: var(--space-sm);
-            border-radius: 6px;
-            cursor: move;
-            display: flex;
-            align-items: center;
-            gap: var(--space-sm);
-            transition: all 0.2s;
-        }
-
-        .toolbox-item:hover {
-            border-color: var(--accent-primary);
-            transform: translateX(5px);
-        }
-
-        .design-canvas {
-            position: relative;
-            background-image:
-                radial-gradient(rgba(56, 189, 248, 0.1) 1px, transparent 1px);
-            background-size: 20px 20px;
-            overflow: hidden;
-        }
-
-        .canvas-node {
-            position: absolute;
-            width: 120px;
-            background: #1e293b;
-            border: 1px solid var(--accent-secondary);
-            border-radius: 8px;
-            padding: 10px;
-            text-align: center;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-            z-index: 10;
-        }
-
-        .canvas-node.active {
-            border-color: var(--accent-green);
-            box-shadow: 0 0 15px rgba(34, 197, 94, 0.3);
-        }
-
-        .canvas-node i {
-            display: block;
-            font-size: 1.5rem;
-            margin-bottom: 5px;
-            color: var(--accent-primary);
-        }
-
-        .connection-line {
-            position: absolute;
-            height: 2px;
-            background: rgba(56, 189, 248, 0.3);
-            transform-origin: 0 50%;
-            z-index: 1;
-        }
-
-        .data-packet {
-            position: absolute;
-            width: 8px;
-            height: 8px;
-            background: var(--accent-green);
-            border-radius: 50%;
-            z-index: 5;
-            box-shadow: 0 0 8px var(--accent-green);
-        }
-
-        .playground-controls {
-            padding: var(--space-md);
-            background: rgba(15, 23, 42, 0.9);
-            border-top: 1px solid var(--border-color);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .metric-badge {
-            background: rgba(56, 189, 248, 0.1);
-            color: var(--accent-primary);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            margin-left: 10px;
-        }
 
         /* ==================== QUICK SCAN PANEL (RECRUITER MODE) ==================== */
         .quick-scan-panel {
@@ -1705,7 +1610,7 @@
             /* Below banner */
             right: -400px;
             width: 320px;
-            background: rgba(15, 23, 42, 0.95);
+            background: rgba(255, 255, 255, 0.85);
             border-left: 2px solid var(--accent-purple);
             height: calc(100vh - 50px);
             z-index: 9997;
@@ -1782,7 +1687,6 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
-                <li><a href="#playground">System Design</a></li>
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -1829,10 +1733,10 @@
 
                     <h3>Education</h3>
                     <h4>KLE Technological University, Hubballi, Karnataka</h4>
-                    <p><strong>B.E. in Computer Science (Artificial Intelligence)</strong> | KLHSSCET, Belagavi,
+                    <p><strong>B.E. in Computer Science (Artificial Intelligence)</strong> | KLMSSCET, Belagavi,
                         Karnataka | Nov 2022 – Present</p>
                     <ul class="cert-list">
-                        <li>GPA: 8.42/10</li>
+                        <li>GPA: 8.57/10</li>
                         <li>Relevant Coursework: Embedded Intelligent Systems, Machine Learning and Deep Learning</li>
                     </ul>
                     <h4>Ekalavya PU College, Belagavi, Karnataka</h4>
@@ -2098,61 +2002,6 @@
         </div>
     </section>
 
-    <section id="playground" class="reveal">
-        <div class="container">
-            <h2 style="text-align: center;">System Design Playground</h2>
-            <p style="text-align: center; color: var(--text-secondary); margin-bottom: var(--space-lg);">
-                Interactive architectural simulator. Add components and simulate traffic.
-            </p>
-
-            <div class="playground-container">
-                <div class="toolbox">
-                    <h4>Components</h4>
-                    <div class="toolbox-item" onclick="addNode('lb')">
-                        <i class="fas fa-network-wired"></i> Load Balancer
-                    </div>
-                    <div class="toolbox-item" onclick="addNode('server')">
-                        <i class="fas fa-server"></i> API Server
-                    </div>
-                    <div class="toolbox-item" onclick="addNode('db')">
-                        <i class="fas fa-database"></i> Database
-                    </div>
-                    <div class="toolbox-item" onclick="addNode('cache')">
-                        <i class="fas fa-bolt"></i> Redis Cache
-                    </div>
-
-                    <h4 style="margin-top: var(--space-lg);">Controls</h4>
-                    <button class="cta" onclick="simulateTraffic()"
-                        style="width: 100%; padding: 10px; font-size: 0.9rem;">
-                        <i class="fas fa-play"></i> Simulate Request
-                    </button>
-                    <button class="cta" onclick="resetCanvas()"
-                        style="width: 100%; padding: 10px; font-size: 0.9rem; margin-top: 10px; background: rgba(255,255,255,0.1);">
-                        <i class="fas fa-undo"></i> Reset
-                    </button>
-                </div>
-
-                <div class="design-canvas" id="designCanvas">
-                    <!-- Default Architecture -->
-                    <div class="canvas-node" id="node-user" style="left: 20px; top: 200px;">
-                        <i class="fas fa-user-circle"></i> User
-                    </div>
-                </div>
-            </div>
-
-            <div class="playground-controls">
-                <div>
-                    <span style="color: var(--text-secondary);">System Status:</span>
-                    <span class="metric-badge" id="latencyMetric"><i class="fas fa-clock"></i> 0ms Latency</span>
-                    <span class="metric-badge" id="rpsMetric"><i class="fas fa-bolt"></i> 0 RPS</span>
-                </div>
-                <div style="font-size: 0.8rem; color: var(--text-secondary);">
-                    *Simplified simulation
-                </div>
-            </div>
-        </div>
-    </section>
-
     <section id="experience" class="reveal">
         <div class="container">
             <h2 style="text-align: center;">Professional Experience</h2>
@@ -2160,14 +2009,27 @@
                 <div class="timeline-item reveal">
                     <div class="timeline-icon"><i class="fas fa-robot"></i></div>
                     <div class="timeline-content">
-                        <h3>Artificial Intelligence Intern, Bitlance Tech Hub Pvt Ltd</h3>
-                        <span>Nov 2025 – Feb 2026</span>
+                        <h3>AI Intern, Bitlance Tech Hub Pvt Ltd Pune</h3>
+                        <span>Dec 2025 – Feb 2026</span>
                         <ul class="cert-list">
                             <li>Developed scalable backend services using FastAPI and Next.js full-stack integration
                             </li>
                             <li>Engineered realistic Text-to-Speech systems using ElevenLabs and Kokoro LLM</li>
                             <li>Streamlined multimedia and data processing using Pydantic, Pydub, PyPDF, and Pillow</li>
                             <li>Integrated LLMs to build end-to-end AI-powered solutions</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item reveal">
+                    <div class="timeline-icon"><i class="fas fa-laptop-code"></i></div>
+                    <div class="timeline-content">
+                        <h3>AI Intern, Shri Durga Developers &amp; Promoters</h3>
+                        <span>Feb 2026 – May 2026</span>
+                        <ul class="cert-list">
+                            <li>Developed and integrated AI-driven solutions for real estate and construction projects
+                            </li>
+                            <li>Collaborated with cross-functional teams to automate data processing and analysis
+                                workflows</li>
                         </ul>
                     </div>
                 </div>
@@ -2313,10 +2175,7 @@
         </div>
     </div>
 
-    <!-- Theme Toggle Button -->
-    <div class="theme-toggle" id="themeToggle">
-        <i class="fas fa-sun" id="themeIcon"></i>
-    </div>
+
 
     <!-- Recruiter Mode Banner -->
     <div class="recruiter-banner">
@@ -2372,7 +2231,7 @@
             <div class="quick-scan-section">
                 <h4><i class="fas fa-graduation-cap"></i> Education</h4>
                 <ul class="quick-scan-list">
-                    <li><i class="fas fa-angle-right"></i> B.E. CS (AI) - 8.42 GPA</li>
+                    <li><i class="fas fa-angle-right"></i> B.E. CS (AI) - 8.57 GPA</li>
                     <li><i class="fas fa-angle-right"></i> Relevant Coursework in AI/ML</li>
                 </ul>
             </div>
@@ -2438,7 +2297,7 @@
                 }
 
                 draw() {
-                    ctx.fillStyle = `rgba(56, 189, 248, ${this.opacity})`;
+                    ctx.fillStyle = `rgba(79, 70, 229, ${this.opacity})`;
                     ctx.beginPath();
                     ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                     ctx.fill();
@@ -2460,7 +2319,7 @@
                         const distance = Math.sqrt(dx * dx + dy * dy);
 
                         if (distance < 120) {
-                            ctx.strokeStyle = `rgba(56, 189, 248, ${0.15 * (1 - distance / 120)})`;
+                            ctx.strokeStyle = `rgba(79, 70, 229, ${0.15 * (1 - distance / 120)})`;
                             ctx.lineWidth = 1;
                             ctx.beginPath();
                             ctx.moveTo(particles[i].x, particles[i].y);
@@ -2566,36 +2425,10 @@
             if (e.key === 'Escape') closeResumeModal();
         });
 
-        // Theme Toggle Functionality
-        const themeToggle = document.getElementById('themeToggle');
-        const themeIcon = document.getElementById('themeIcon');
+        // Theme Functionality (Enforced Light Theme)
         const html = document.documentElement;
-
-        // Load saved theme from localStorage
-        const savedTheme = localStorage.getItem('theme') || 'dark';
-        html.setAttribute('data-theme', savedTheme);
-        updateThemeIcon(savedTheme);
-
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = html.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-
-            html.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            updateThemeIcon(newTheme);
-        });
-
-
-
-        function updateThemeIcon(theme) {
-            if (theme === 'dark') {
-                themeIcon.classList.remove('fa-moon');
-                themeIcon.classList.add('fa-sun');
-            } else {
-                themeIcon.classList.remove('fa-sun');
-                themeIcon.classList.add('fa-moon');
-            }
-        }
+        html.setAttribute('data-theme', 'light');
+        localStorage.setItem('theme', 'light');
 
         // 5. Recruiter Mode Toggle
         const recruiterToggle = document.getElementById('recruiterToggle');
@@ -2722,155 +2555,7 @@
         // Initialize Metrics
         renderMetrics();
 
-        // 8. System Design Playground Helper: Make Draggable
-        function makeDraggable(node) {
-            const canvas = document.getElementById('designCanvas');
 
-            node.onmousedown = function (e) {
-                // Prevent drag if clicking a specific control (optional)
-
-                let shiftX = e.clientX - node.getBoundingClientRect().left;
-                let shiftY = e.clientY - node.getBoundingClientRect().top;
-
-                node.style.zIndex = 1000;
-
-                function moveAt(pageX, pageY) {
-                    let newLeft = pageX - canvas.getBoundingClientRect().left - shiftX;
-                    let newTop = pageY - canvas.getBoundingClientRect().top - shiftY;
-
-                    // Boundary checks (keep inside canvas)
-                    const maxLeft = canvas.offsetWidth - node.offsetWidth;
-                    const maxTop = canvas.offsetHeight - node.offsetHeight;
-
-                    newLeft = Math.max(0, Math.min(newLeft, maxLeft));
-                    newTop = Math.max(0, Math.min(newTop, maxTop));
-
-                    node.style.left = newLeft + 'px';
-                    node.style.top = newTop + 'px';
-                }
-
-                function onMouseMove(event) {
-                    moveAt(event.clientX, event.clientY);
-                }
-
-                document.addEventListener('mousemove', onMouseMove);
-
-                node.onmouseup = function () {
-                    document.removeEventListener('mousemove', onMouseMove);
-                    node.onmouseup = null;
-                    node.style.zIndex = 10;
-                };
-            };
-
-            node.ondragstart = function () {
-                return false;
-            };
-        }
-
-        // Initialize default node
-        window.addEventListener('load', () => {
-            const defaultUser = document.getElementById('node-user');
-            if (defaultUser) makeDraggable(defaultUser);
-        });
-
-        function addNode(type) {
-            const canvas = document.getElementById('designCanvas');
-            const node = document.createElement('div');
-            node.className = 'canvas-node';
-
-            // Random position
-            const x = Math.floor(Math.random() * (canvas.offsetWidth - 120));
-            const y = Math.floor(Math.random() * (canvas.offsetHeight - 80));
-            node.style.left = `${x}px`;
-            node.style.top = `${y}px`;
-
-            // Icon & Text
-            let icon = 'fa-server';
-            let text = 'Node';
-            if (type === 'lb') { icon = 'fa-network-wired'; text = 'LB'; }
-            if (type === 'server') { icon = 'fa-server'; text = 'Server'; }
-            if (type === 'db') { icon = 'fa-database'; text = 'DB'; }
-            if (type === 'cache') { icon = 'fa-bolt'; text = 'Cache'; }
-
-            node.innerHTML = `<i class="fas ${icon}"></i> ${text}`;
-
-            // Apply drag logic
-            makeDraggable(node);
-
-            canvas.appendChild(node);
-        }
-
-        function simulateTraffic() {
-            const canvas = document.getElementById('designCanvas');
-            const nodes = canvas.querySelectorAll('.canvas-node');
-            if (nodes.length < 2) {
-                alert("Please add at least one more component to simulate traffic!");
-                return;
-            }
-
-            // Find User node or first node
-            let startNode = document.getElementById('node-user') || nodes[0];
-
-            const packet = document.createElement('div');
-            packet.className = 'data-packet';
-            // Start from center of node
-            packet.style.left = (parseInt(startNode.style.left) + 60) + 'px';
-            packet.style.top = (parseInt(startNode.style.top) + 20) + 'px';
-            canvas.appendChild(packet);
-
-            // Pick a random target node that isn't the start node
-            let target;
-            let attempts = 0;
-            do {
-                target = nodes[Math.floor(Math.random() * nodes.length)];
-                attempts++;
-            } while (target === startNode && attempts < 10);
-
-            if (target === startNode) {
-                // If we couldn't find a different target (unlikely with >1 node), just fail gracefully
-                packet.remove();
-                return;
-            }
-
-            const targetX = parseInt(target.style.left) + 60;
-            const targetY = parseInt(target.style.top) + 20;
-
-            const startX = parseInt(packet.style.left);
-            const startY = parseInt(packet.style.top);
-
-            let progress = 0;
-            const animatePacket = () => {
-                progress += 0.02; // Slower speed for better visibility
-                if (progress >= 1) {
-                    packet.remove();
-                    // Update metrics
-                    const randomRPS = Math.floor(Math.random() * 500 + 500);
-                    const randomLatency = Math.floor(Math.random() * 20 + 10);
-                    document.getElementById('rpsMetric').innerHTML = `<i class="fas fa-bolt"></i> ${randomRPS} RPS`;
-                    document.getElementById('latencyMetric').innerHTML = `<i class="fas fa-clock"></i> ${randomLatency}ms Latency`;
-                    return;
-                }
-
-                packet.style.left = startX + (targetX - startX) * progress + 'px';
-                packet.style.top = startY + (targetY - startY) * progress + 'px';
-                requestAnimationFrame(animatePacket);
-            };
-            animatePacket();
-        }
-
-        function resetCanvas() {
-            const canvas = document.getElementById('designCanvas');
-            canvas.innerHTML = `
-                <div class="canvas-node" id="node-user" style="left: 20px; top: 200px;">
-                    <i class="fas fa-user-circle"></i> User
-                </div>
-            `;
-            // Re-apply drag to default node
-            makeDraggable(document.getElementById('node-user'));
-
-            document.getElementById('rpsMetric').innerHTML = `<i class="fas fa-bolt"></i> 0 RPS`;
-            document.getElementById('latencyMetric').innerHTML = `<i class="fas fa-clock"></i> 0ms Latency`;
-        }
 
         // 9. Contact Form Handling (AJAX)
         const contactForm = document.getElementById('contactForm');
